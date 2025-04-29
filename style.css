@@ -107,7 +107,6 @@ body {
   pointer-events: none;
 }
 
-/* Кнопка Назад */
 .back-button {
   position: absolute;
   left: 0;
