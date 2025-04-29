@@ -16,7 +16,7 @@ function back() {
   document.getElementById(current).classList.remove('active');
   document.getElementById(screens.stack[screens.stack.length - 1]).classList.add('active');
 
-  // Если вернулись обратно к списку складов — очищаем детали
+  // Очищаем информацию о складе при возврате
   if (current === 'warehouse-detail') {
     document.getElementById("warehouse-info").innerHTML = "";
   }
@@ -39,7 +39,7 @@ function showWarehouse(index) {
   const w = warehouses[index];
 
   let infoHTML = `
-    <h3>${w.name}</h3>
+    <h3 style="text-align: center;">${w.name}</h3>
     <p><strong>Адрес:</strong> ${w.address}</p>
   `;
 
