@@ -15,10 +15,47 @@ function back() {
   const current = screens.stack.pop();
   document.getElementById(current).classList.remove('active');
   document.getElementById(screens.stack[screens.stack.length - 1]).classList.add('active');
-  // Если возвращаемся к главному меню, очищаем info
-  document.getElementById("warehouse-info").innerHTML = "";
+
+  // Если вернулись на главный экран, очищаем детали
+  if (current === 'warehouse-detail') {
+    document.getElementById("warehouse-info").innerHTML = "";
+  }
 }
 
+function makeCall(phone) {
+  const cleanNumber = phone.replace(/\D/g, '');
+  window.location.href = `tel:+${cleanNumber}`;
+}
+
+// Генерируем список складов динамически
+function generateWarehouseList() {
+  const container = document.getElementById('warehouse-list');
+  container.innerHTML = '';
+  warehouses.forEach((w, i) => {
+    const btn = document.createElement('button');
+    btn.textContent = w.name;
+    btn.onclick = () => showWarehouse(i);
+    container.appendChild(btn);
+  });
+}
+
+// Показываем информацию о конкретном складе вместо списка
+function showWarehouse(index) {
+  const w = warehouses[index];
+
+  let infoHTML = `
+    <h3>${w.name}</h3>
+    <p><strong>Адрес:</strong> ${w.address}</p>
+    <button onclick="makeCall('${w.phone}')">📞 Позвонить (${w.phone})</button>
+    <br /><br />
+    <a href="yandexnavi://build_route_on_map?lat_to=${w.latitude}&lon_to=${w.longitude}" target="_blank">🗺️ Построить маршрут (Яндекс)</a>
+  `;
+
+  document.getElementById('warehouse-info').innerHTML = infoHTML;
+  showScreen('warehouse-detail');
+}
+
+// Данные о складах
 const warehouses = [
   {
     name: "ОП Горелово",
@@ -92,19 +129,7 @@ const warehouses = [
   }
 ];
 
-function makeCall(phone) {
-  const cleanNumber = phone.replace(/\D/g, '');
-  window.location.href = `tel:+${cleanNumber}`;
-}
-
-function showWarehouse(index) {
-  const w = warehouses[index];
-  let info = `
-    <h3>${w.name}</h3>
-    <p><strong>Адрес:</strong> ${w.address}</p>
-    <button onclick="makeCall('${w.phone}')">📞 Позвонить (${w.phone})</button>
-    <br /><br />
-    <a href="yandexnavi://build_route_on_map?lat_to=${w.latitude}&lon_to=${w.longitude}" target="_blank">🗺️ Построить маршрут (Яндекс)</a>
-  `;
-  document.getElementById("warehouse-info").innerHTML = info;
-}
+// Инициализация списка складов при первом открытии раздела
+document.addEventListener('DOMContentLoaded', () => {
+  generateWarehouseList();
+});
