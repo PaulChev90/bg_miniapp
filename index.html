@@ -2,14 +2,13 @@
 <html lang="ru">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
   <title>BG Logistic</title>
   <link rel="stylesheet" href="style.css" />
   <script src="https://telegram.org/js/telegram-web-app.js"></script>
 </head>
 <body>
   <div id="app">
-
     <!-- Главное меню -->
     <section id="main-menu" class="screen active">
       <header class="header">
@@ -29,7 +28,6 @@
         <h2>Выберите склад</h2>
       </div>
       <div id="warehouse-list" class="warehouse-buttons"></div>
-
       <div class="bottom-button-wrapper">
         <button onclick="back()" class="back-button">← Назад</button>
       </div>
@@ -41,7 +39,7 @@
         <h2>Информация о складе</h2>
       </div>
       <div id="warehouse-info"></div>
-      <div class="bottom-bar">
+      <div class="bottom-button-wrapper">
         <button onclick="back()" class="back-button">← Назад</button>
       </div>
     </section>
@@ -51,32 +49,19 @@
       <div class="screen-header">
         <h2>О компании</h2>
       </div>
-      <p>Компания BG Logistic предоставляет услуги складской логистики по всей России.</p>
-      <div id="company-phone"></div>
+      <p>Компания «BG Logistic» предоставляет услуги складской логистики по всей России.</p>
+      <p id="company-phone-block">
+        <strong>Телефон:</strong>
+        <span id="company-phone-number">+7 800 222-24-12</span><br />
+        <button id="company-phone-action" class="copy-button">📋 Скопировать номер</button>
+      </p>
       <p>Более подробная информация доступна на нашем сайте: <a href="https://bg-logistic.ru" target="_blank">bg-logistic.ru</a></p>
-      <div class="bottom-bar">
+      <div class="bottom-button-wrapper">
         <button onclick="back()" class="back-button">← Назад</button>
       </div>
     </section>
-
   </div>
-
   <script src="script.js"></script>
-  <script>
-    function adjustHeight() {
-      const app = document.getElementById('app');
-      if (app) {
-        app.style.height = window.innerHeight + 'px';
-      }
-    }
-
-    window.addEventListener('load', () => {
-      adjustHeight();
-      renderCompanyPhone();
-    });
-
-    window.addEventListener('resize', adjustHeight);
-  </script>
 </body>
 </html>
 
