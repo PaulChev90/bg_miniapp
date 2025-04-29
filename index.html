@@ -30,17 +30,14 @@
       <button onclick="back()">← Назад</button>
       <h2>Выберите склад</h2>
     </div>
-    <div class="warehouse-buttons">
-      <button onclick="showWarehouse(0)">ОП Горелово</button>
-      <button onclick="showWarehouse(1)">ОП Всеволожск</button>
-      <button onclick="showWarehouse(2)">ОП Бугры</button>
-      <button onclick="showWarehouse(3)">ОП Санкт-Петербург</button>
-      <button onclick="showWarehouse(4)">ОП Чехов</button>
-      <button onclick="showWarehouse(5)">ОП Ворсино</button>
-      <button onclick="showWarehouse(6)">ОП Екатеринбург</button>
-      <button onclick="showWarehouse(7)">ОП Копейск</button>
-      <button onclick="showWarehouse(8)">ОП Толмачёво</button>
-      <button onclick="showWarehouse(9)">ОП Ардон</button>
+    <div id="warehouse-list" class="warehouse-buttons"></div>
+  </section>
+
+  <!-- Информация по складу -->
+  <section id="warehouse-detail" class="screen">
+    <div class="screen-header">
+      <button onclick="back()">← Назад</button>
+      <h2>Информация о складе</h2>
     </div>
     <div id="warehouse-info"></div>
   </section>
