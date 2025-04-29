@@ -49,10 +49,8 @@ function showWarehouse(index) {
 
   const cleanNumber = w.phone.replace(/\D/g, '');
   infoHTML += `
-    <a href="tel:+${cleanNumber}" class="call-button">
-      📞 Позвонить (${w.phone})
-    </a>
-    <br /><br />
+    <p><strong>Телефон:</strong> <a href="tel:+${cleanNumber}" class="tel-link">${w.phone}</a></p>
+    <br />
     <a href="yandexnavi://build_route_on_map?lat_to=${w.latitude}&lon_to=${w.longitude}" target="_blank" class="map-button">
       🗺️ Построить маршрут (Яндекс)
     </a>
