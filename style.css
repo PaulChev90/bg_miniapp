@@ -65,26 +65,27 @@ body {
   cursor: pointer;
 }
 
-button {
+button,
+.menu-button,
+.call-button,
+.map-button {
+  display: inline-block;
+  width: 100%;
   padding: 15px;
   border: none;
   border-radius: 8px;
   font-size: 16px;
-  cursor: pointer;
+  text-align: center;
+  text-decoration: none;
+  color: white;
+  background-color: #1976d2;
   transition: background 0.3s ease;
 }
 
-/* Primary buttons */
-button {
-  background-color: #1976d2;
-  color: white;
-  text-align: left;
-  min-height: 60px;
-  white-space: normal;
-  word-break: break-word;
-}
-
-button:hover {
+button:hover,
+.menu-button:hover,
+.call-button:hover,
+.map-button:hover {
   background-color: #1565c0;
 }
 
