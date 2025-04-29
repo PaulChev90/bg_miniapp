@@ -1,7 +1,3 @@
-:root {
-  --vh: 100%;
-}
-
 * {
   box-sizing: border-box;
 }
@@ -20,10 +16,9 @@ body {
 }
 
 #app {
-  height: calc(var(--vh, 1vh) * 100);
+  height: 100%;
   display: flex;
   flex-direction: column;
-  overflow: hidden;
 }
 
 .header {
@@ -66,26 +61,13 @@ body {
 }
 
 .screen-header {
-  position: relative;
   text-align: center;
-  padding: 10px 0;
-}
-
-.back-button {
-  position: absolute;
-  left: 0;
-  top: 50%;
-  transform: translateY(-50%);
-  background: none;
-  border: none;
-  color: #1976d2;
-  font-size: 16px;
-  cursor: pointer;
-  padding: 10px;
+  margin-bottom: 20px;
 }
 
 .screen-title {
-  font-size: 20px;
+  font-size: 24px;
+  font-weight: bold;
   margin: 0;
 }
 
@@ -135,5 +117,31 @@ button:hover,
 
 .tel-link:hover {
   text-decoration: underline;
+}
+
+/* Кнопка Назад внизу */
+.back-button-container {
+  position: fixed;
+  bottom: 20px;
+  left: 0;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  z-index: 10;
+}
+
+.bottom-back-button {
+  padding: 12px 20px;
+  background-color: #1976d2;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  cursor: pointer;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+}
+
+.bottom-back-button:hover {
+  background-color: #1565c0;
 }
 
