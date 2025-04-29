@@ -11,10 +11,6 @@ html, body {
   height: 100%;
 }
 
-body {
-  position: relative;
-}
-
 #app {
   height: 100%;
   display: flex;
@@ -61,11 +57,19 @@ body {
 }
 
 .screen-header {
-  position: relative;
   display: flex;
   align-items: center;
-  justify-content: center;
   margin-bottom: 20px;
+  position: relative;
+}
+
+.screen-header .left {
+  position: absolute;
+  left: 0;
+}
+
+.screen-header .center {
+  margin: 0 auto;
 }
 
 .screen-header h2 {
@@ -76,19 +80,14 @@ body {
 }
 
 .back-button {
-  position: absolute;
-  left: 0;
-  top: 50%;
-  transform: translateY(-50%);
   background-color: transparent;
   border: none;
   color: #1976d2;
-  font-size: 20px;
+  font-size: 16px;
   cursor: pointer;
-  padding: 4px 10px;
+  padding: 6px 12px;
   border-radius: 6px;
   transition: background-color 0.3s ease;
-  z-index: 2;
 }
 
 .back-button:hover {
@@ -134,7 +133,6 @@ button:hover,
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
 }
 
-/* Стили для кликабельных телефонов */
 .tel-link {
   color: #1976d2;
   text-decoration: none;
@@ -144,3 +142,4 @@ button:hover,
 .tel-link:hover {
   text-decoration: underline;
 }
+
