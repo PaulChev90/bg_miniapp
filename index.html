@@ -15,7 +15,6 @@
         <img src="https://bg-logistic.ru/local/templates/bg-logistic/images/header-logo-new.svg" alt="Логотип BG Logistic" width="200" />
         <h1>Добро пожаловать в BG Logistic</h1>
       </header>
-
       <nav class="menu">
         <button onclick="showScreen('warehouses')">Склады</button>
         <button onclick="showScreen('about')">О компании</button>
@@ -25,34 +24,52 @@
     <!-- Склады -->
     <section id="warehouses" class="screen">
       <div class="screen-header">
-        <button class="back-button" onclick="back()">← Назад</button>
         <h2 class="screen-title">Выберите склад</h2>
       </div>
       <div id="warehouse-list" class="warehouse-buttons"></div>
+      <div class="back-button-container">
+        <button class="bottom-back-button" onclick="back()">← Назад</button>
+      </div>
     </section>
 
     <!-- Информация по складу -->
     <section id="warehouse-detail" class="screen">
       <div class="screen-header">
-        <button class="back-button" onclick="back()">← Назад</button>
         <h2 class="screen-title">Информация о складе</h2>
       </div>
       <div id="warehouse-info"></div>
+      <div class="back-button-container">
+        <button class="bottom-back-button" onclick="back()">← Назад</button>
+      </div>
     </section>
 
     <!-- О компании -->
     <section id="about" class="screen">
       <div class="screen-header">
-        <button class="back-button" onclick="back()">← Назад</button>
         <h2 class="screen-title">О компании</h2>
       </div>
       <p>Компания «BG Logistic» предоставляет услуги складской логистики по всей России.</p>
       <p><strong>Телефон:</strong> <a href="tel:+78002222412">+7 800 222-24-12</a></p>
       <p>Более подробная информация доступна на нашем сайте: <a href="https://bg-logistic.ru" target="_blank">bg-logistic.ru</a></p>
+      <div class="back-button-container">
+        <button class="bottom-back-button" onclick="back()">← Назад</button>
+      </div>
     </section>
   </div>
 
   <script src="script.js"></script>
+  <script>
+    function adjustHeight() {
+      const app = document.getElementById('app');
+      if (app) {
+        app.style.height = window.innerHeight + 'px';
+      }
+    }
+
+    window.addEventListener('load', adjustHeight);
+    window.addEventListener('resize', adjustHeight);
+  </script>
 </body>
 </html>
+
 
