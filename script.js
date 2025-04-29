@@ -94,7 +94,8 @@ function backToMenu() {
 }
 
 function makeCall(phone) {
-  window.location.href = `tel:${phone.replace(/\D/g, '')}`;
+  const cleanNumber = phone.replace(/\D/g, '');
+  window.location.href = `tel:+${cleanNumber}`;
 }
 
 function showWarehouse(index) {
@@ -102,12 +103,12 @@ function showWarehouse(index) {
   let info = `
     <h3>${w.name}</h3>
     <p><strong>Адрес:</strong> ${w.address}</p>
-    <button onclick="makeCall('${w.phone}')">Позвонить (${w.phone})</button>
+    <button onclick="makeCall('${w.phone}')">📞 Позвонить (${w.phone})</button>
     <br /><br />
-    <a href="yandexnavi://build_route_on_map?lat_to=${w.latitude}&lon_to=${w.longitude}" target="_blank">Построить маршрут (Яндекс)</a>
+    <a href="yandexnavi://build_route_on_map?lat_to=${w.latitude}&lon_to=${w.longitude}" target="_blank">🗺️ Построить маршрут (Яндекс)</a>
   `;
   if (w.additional_inf) {
-    info += `<p style="color:#555; margin-top:10px;">${w.additional_inf}</p>`;
+    info += `<p style="color:#555; margin-top:10px;">ℹ️ ${w.additional_inf}</p>`;
   }
 
   document.getElementById("warehouse-info").innerHTML = info;
