@@ -9,7 +9,6 @@
 </head>
 <body>
   <div id="app">
-
     <!-- Главное меню -->
     <section id="main-menu" class="screen active">
       <header class="header">
@@ -18,20 +17,15 @@
       </header>
 
       <nav class="menu">
-      <button onclick="showScreen('warehouses')">
-      <span class="icon">🏬</span> Склады
-      </button>
-      <button onclick="showScreen('about')">
-      <span class="icon">ℹ️</span> О компании
-      </button>
+        <button onclick="showScreen('warehouses')">Склады</button>
+        <button onclick="showScreen('about')">О компании</button>
       </nav>
-
     </section>
 
     <!-- Склады -->
     <section id="warehouses" class="screen">
       <div class="screen-header">
-        <button class="back-button" onclick="back()">← Назад</button>
+        <button class="back-button" onclick="back()">←</button>
         <h2>Выберите склад</h2>
       </div>
       <div id="warehouse-list" class="warehouse-buttons"></div>
@@ -40,7 +34,7 @@
     <!-- Информация по складу -->
     <section id="warehouse-detail" class="screen">
       <div class="screen-header">
-        <button class="back-button" onclick="back()">← Назад</button>
+        <button class="back-button" onclick="back()">←</button>
         <h2>Информация о складе</h2>
       </div>
       <div id="warehouse-info"></div>
@@ -49,14 +43,13 @@
     <!-- О компании -->
     <section id="about" class="screen">
       <div class="screen-header">
-        <button class="back-button" onclick="back()">← Назад</button>
+        <button class="back-button" onclick="back()">←</button>
         <h2>О компании</h2>
       </div>
       <p>Компания «BG Logistic» предоставляет услуги складской логистики по всей России.</p>
       <p><strong>Телефон:</strong> <a href="tel:+78002222412">+7 800 222-24-12</a></p>
       <p>Более подробная информация доступна на нашем сайте: <a href="https://bg-logistic.ru" target="_blank">bg-logistic.ru</a></p>
     </section>
-
   </div>
 
   <script src="script.js"></script>
