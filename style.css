@@ -32,7 +32,6 @@ body {
   margin-bottom: 10px;
 }
 
-/* Главное меню */
 .menu {
   display: flex;
   flex-direction: column;
@@ -42,67 +41,36 @@ body {
   flex-grow: 1;
 }
 
-.menu button {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 10px;
-  font-weight: bold;
-  font-size: 16px;
-  padding: 15px;
-  border: none;
-  border-radius: 10px;
-  background-color: #1976d2;
-  color: white;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-}
-
-.menu button:hover {
-  background-color: #1565c0;
-}
-
-.menu button .icon {
-  font-size: 18px;
-}
-
-/* Экраны */
 .screen {
   position: absolute;
   top: 0;
-  left: 100%;
-  right: -100%;
+  left: 0;
+  right: 0;
   bottom: 0;
   padding: 20px;
   background-color: white;
+  transform: translateX(100%);
+  transition: transform 0.3s ease;
   z-index: 2;
   overflow-y: auto;
-  opacity: 0;
-  transform: translateX(100%);
-  transition: transform 0.4s ease, opacity 0.4s ease;
 }
 
 .screen.active {
-  left: 0;
-  right: 0;
-  opacity: 1;
   transform: translateX(0);
   z-index: 3;
 }
 
-/* Заголовок экрана */
 .screen-header {
   position: relative;
   display: flex;
-  justify-content: center;
   align-items: center;
+  justify-content: center;
   margin-bottom: 20px;
 }
 
 .screen-header h2 {
   margin: 0;
   font-size: 20px;
-  flex-grow: 1;
   text-align: center;
   pointer-events: none;
 }
@@ -115,73 +83,16 @@ body {
   background-color: transparent;
   border: none;
   color: #1976d2;
-  font-size: 14px;
+  font-size: 20px;
   cursor: pointer;
-  padding: 6px 10px;
+  padding: 4px 10px;
   border-radius: 6px;
-  transition: background 0.3s ease;
-  z-index: 4;
+  transition: background-color 0.3s ease;
+  z-index: 2;
 }
 
 .back-button:hover {
-  background-color: #e3f2fd;
-}
-
-/* Кнопки складов */
-.warehouse-buttons {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 10px;
-}
-
-/* Блок с информацией о складе */
-#warehouse-info {
-  margin-top: 20px;
-  background-color: #f9f9f9;
-  padding: 15px;
-  border-radius: 8px;
-  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
-  opacity: 0;
-  transform: translateY(10px);
-  animation: fadeInInfo 0.4s forwards;
-}
-
-/* Анимация появления информации о складе */
-@keyframes fadeInInfo {
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-/* Телефон */
-.tel-link {
-  color: #1976d2;
-  text-decoration: none;
-  font-weight: bold;
-}
-
-.tel-link:hover {
-  text-decoration: underline;
-}
-
-/* Кнопка карты */
-.map-button {
-  display: inline-block;
-  width: 100%;
-  padding: 15px;
-  border: none;
-  border-radius: 8px;
-  font-size: 16px;
-  text-align: center;
-  text-decoration: none;
-  color: white;
-  background-color: #1976d2;
-  transition: background 0.3s ease;
-}
-
-.map-button:hover {
-  background-color: #1565c0;
+  background-color: #e0e0e0;
 }
 
 button,
@@ -198,8 +109,8 @@ button,
   text-decoration: none;
   color: white;
   background-color: #1976d2;
+  transition: background 0.3s ease;
   cursor: pointer;
-  transition: background-color 0.3s ease;
 }
 
 button:hover,
@@ -209,3 +120,27 @@ button:hover,
   background-color: #1565c0;
 }
 
+.warehouse-buttons {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 10px;
+}
+
+#warehouse-info {
+  margin-top: 20px;
+  background-color: #f9f9f9;
+  padding: 15px;
+  border-radius: 8px;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+}
+
+/* Стили для кликабельных телефонов */
+.tel-link {
+  color: #1976d2;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.tel-link:hover {
+  text-decoration: underline;
+}
