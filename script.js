@@ -16,15 +16,10 @@ function back() {
   document.getElementById(current).classList.remove('active');
   document.getElementById(screens.stack[screens.stack.length - 1]).classList.add('active');
 
+  // Если вернулись обратно к списку складов — очищаем детали
   if (current === 'warehouse-detail') {
     document.getElementById("warehouse-info").innerHTML = "";
   }
-}
-
-// Форматирует телефон для tel:
-function makeCall(phone) {
-  const cleanNumber = phone.replace(/\D/g, '');
-  window.location.href = `tel:+${cleanNumber}`;
 }
 
 // Генерируем список складов
@@ -48,22 +43,26 @@ function showWarehouse(index) {
     <p><strong>Адрес:</strong> ${w.address}</p>
   `;
 
-  // Проверяем дополнительную информацию
   if (w.additional_inf && w.additional_inf.trim()) {
     infoHTML += `<p style="color:#555; margin-top:10px;"><i>${w.additional_inf}</i></p>`;
   }
 
+  const cleanNumber = w.phone.replace(/\D/g, '');
   infoHTML += `
-    <button onclick="makeCall('${w.phone}')">📞 Позвонить (${w.phone})</button>
+    <a href="tel:+${cleanNumber}" class="call-button">
+      📞 Позвонить (${w.phone})
+    </a>
     <br /><br />
-    <a href="yandexnavi://build_route_on_map?lat_to=${w.latitude}&lon_to=${w.longitude}" target="_blank">🗺️ Построить маршрут (Яндекс)</a>
+    <a href="yandexnavi://build_route_on_map?lat_to=${w.latitude}&lon_to=${w.longitude}" target="_blank" class="map-button">
+      🗺️ Построить маршрут (Яндекс)
+    </a>
   `;
 
   document.getElementById('warehouse-info').innerHTML = infoHTML;
   showScreen('warehouse-detail');
 }
 
-// Список складов
+// Данные о складах
 const warehouses = [
   {
     name: "ОП Горелово",
