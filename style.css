@@ -112,3 +112,13 @@ button:hover,
   border-radius: 8px;
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
 }
+/* Стили для кликабельных телефонов */
+.tel-link {
+  color: #1976d2;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.tel-link:hover {
+  text-decoration: underline;
+}
