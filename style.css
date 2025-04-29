@@ -123,3 +123,35 @@ button:hover,
 .tel-link:hover {
   text-decoration: underline;
 }
+
+/* ... (всё остальное без изменений) */
+
+h1, h2, h3 {
+  text-align: center;
+  margin: 0 0 15px;
+}
+
+.back-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background-color: transparent;
+  border: none;
+  color: #1976d2;
+  font-size: 16px;
+  cursor: pointer;
+  font-weight: 500;
+  padding: 8px 12px;
+  border-radius: 6px;
+  transition: background 0.3s ease;
+}
+
+.back-button:hover {
+  background-color: #e3f2fd;
+}
+
+.screen {
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+  border-radius: 12px 12px 0 0;
+}
+
