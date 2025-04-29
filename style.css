@@ -155,3 +155,63 @@ h1, h2, h3 {
   border-radius: 12px 12px 0 0;
 }
 
+/* Центрируем заголовки при наличии кнопки Назад */
+.screen-header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  margin-bottom: 20px;
+}
+
+.screen-header h2 {
+  flex: 1;
+  text-align: center;
+  font-size: 20px;
+  margin: 0;
+}
+
+/* Кнопка Назад — маленькая и слева */
+.back-button {
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: transparent;
+  border: none;
+  color: #1976d2;
+  font-size: 14px;
+  cursor: pointer;
+  padding: 6px 10px;
+  border-radius: 6px;
+  transition: background 0.3s ease;
+}
+
+.back-button:hover {
+  background-color: #e3f2fd;
+}
+
+/* Кнопки меню с иконками */
+.menu button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  font-weight: bold;
+  font-size: 16px;
+  padding: 15px;
+  border: none;
+  border-radius: 10px;
+  background-color: #1976d2;
+  color: white;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.menu button:hover {
+  background-color: #1565c0;
+}
+
+.menu button .icon {
+  font-size: 18px;
+}
