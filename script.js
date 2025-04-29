@@ -1,5 +1,5 @@
 function showScreen(id) {
-  document.getElementById(screens.stack[screens.stack.length - 1]).classList.remove('active');
+  document.querySelectorAll('.screen.active').forEach(el => el.classList.remove('active'));
   document.getElementById(id).classList.add('active');
   screens.stack.push(id);
 }
@@ -8,24 +8,17 @@ function back() {
   if (screens.stack.length <= 1) return;
   const current = screens.stack.pop();
   document.getElementById(current).classList.remove('active');
-  document.getElementById(screens.stack[screens.stack.length - 1]).classList.add('active');
+  const prev = screens.stack[screens.stack.length - 1];
+  document.getElementById(prev).classList.add('active');
 
   if (current === 'warehouse-detail') {
     document.getElementById("warehouse-info").innerHTML = "";
   }
 }
 
-function isIOS() {
-  return /iPhone|iPad|iPod/i.test(navigator.userAgent);
-}
-
-function copyPhone(number) {
-  navigator.clipboard.writeText("+" + number).then(() => {
-    alert("Номер скопирован. Вставьте его вручную в Телефон.");
-  }).catch(() => {
-    alert("Не удалось скопировать номер.");
-  });
-}
+// Определяем платформу
+const isIOS = /iPhone|iPad|iPod/i.test(navigator.userAgent);
+const isAndroid = /Android/i.test(navigator.userAgent);
 
 function generateWarehouseList() {
   const container = document.getElementById('warehouse-list');
@@ -40,7 +33,6 @@ function generateWarehouseList() {
 
 function showWarehouse(index) {
   const w = warehouses[index];
-  const cleanNumber = w.phone.replace(/\D/g, '');
 
   let infoHTML = `
     <h3>${w.name}</h3>
@@ -51,14 +43,14 @@ function showWarehouse(index) {
     infoHTML += `<p style="color:#555; margin-top:10px;"><i>${w.additional_inf}</i></p>`;
   }
 
-  if (isIOS()) {
-    infoHTML += `
-      <p><strong>Телефон:</strong> ${w.phone}<br />
-      <button onclick="copyPhone('${cleanNumber}')" class="copy-button">📋 Скопировать номер</button></p>
-    `;
+  const cleanNumber = w.phone.replace(/[^+\\d]/g, '');
+
+  if (isAndroid) {
+    infoHTML += `<p><strong>Телефон:</strong> <a href="tel:${cleanNumber}" class="tel-link">${w.phone}</a></p>`;
   } else {
     infoHTML += `
-      <p><strong>Телефон:</strong> <a href="tel:+${cleanNumber}" class="tel-link">${w.phone}</a></p>
+      <p><strong>Телефон:</strong> <span class="tel-link">${w.phone}</span></p>
+      <button class="copy-button" onclick="copyPhone('${cleanNumber}')">📋 Скопировать номер</button>
     `;
   }
 
@@ -73,33 +65,16 @@ function showWarehouse(index) {
   showScreen('warehouse-detail');
 }
 
-function renderCompanyPhone() {
-  const phoneContainer = document.getElementById("company-phone");
-  const rawPhone = "+7 800 222-24-12";
-  const cleanNumber = rawPhone.replace(/\D/g, '');
-
-  let html = '';
-
-  if (isIOS()) {
-    html = `
-      <p><strong>Телефон:</strong> ${rawPhone}<br/>
-      <button onclick="copyPhone('${cleanNumber}')" class="copy-button">📋 Скопировать номер</button></p>
-    `;
-  } else {
-    html = `
-      <p><strong>Телефон:</strong> <a href="tel:+${cleanNumber}" class="tel-link">${rawPhone}</a></p>
-    `;
-  }
-
-  phoneContainer.innerHTML = html;
+function copyPhone(number) {
+  navigator.clipboard.writeText(number).then(() => {
+    alert('Номер скопирован');
+  });
 }
 
-const screens = {
-  stack: ['main-menu']
-};
+const screens = { stack: ['main-menu'] };
 
 const warehouses = [
-    {
+  {
     name: "ОП Горелово",
     address: "Волхонское шоссе, 9/2, территория Северная часть производственной зоны Горелово, Виллозское городское поселение, Ломоносовский район, Ленинградская область",
     phone: "+7(921)928-55-73",
@@ -183,6 +158,22 @@ const warehouses = [
 
 document.addEventListener('DOMContentLoaded', () => {
   generateWarehouseList();
+
+  const companyBtn = document.getElementById('company-phone-action');
+  const companyPhone = document.getElementById('company-phone-number');
+  if (companyBtn && companyPhone) {
+    if (isAndroid) {
+      companyBtn.innerText = '📞 Позвонить';
+      companyBtn.onclick = () => {
+        window.location.href = `tel:${companyPhone.textContent.replace(/[^+\\d]/g, '')}`;
+      };
+    } else {
+      companyBtn.innerText = '📋 Скопировать номер';
+      companyBtn.onclick = () => {
+        copyPhone(companyPhone.textContent);
+      };
+    }
+  }
 });
 
 
