@@ -1,3 +1,4 @@
+// Fix for iOS viewport height
 function setViewportHeight() {
   const vh = window.innerHeight * 0.01;
   document.documentElement.style.setProperty('--vh', `${vh}px`);
@@ -39,7 +40,6 @@ function generateWarehouseList() {
 
 function showWarehouse(index) {
   const w = warehouses[index];
-
   let infoHTML = `
     <h3>${w.name}</h3>
     <p><strong>Адрес:</strong> ${w.address}</p>
