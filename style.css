@@ -184,3 +184,29 @@ body {
 .map-button:hover {
   background-color: #1565c0;
 }
+
+button,
+.menu-button,
+.call-button,
+.map-button {
+  display: inline-block;
+  width: 100%;
+  padding: 15px;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  text-align: center;
+  text-decoration: none;
+  color: white;
+  background-color: #1976d2;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+button:hover,
+.menu-button:hover,
+.call-button:hover,
+.map-button:hover {
+  background-color: #1565c0;
+}
+
